@@ -254,19 +254,15 @@ async def prompt_bing_pro(interaction: discord.Interaction, prompt: str):
 
 
 @bot.tree.command(
-    name="image-prompt",
-    description="use gemini to enhance bing create to create better images",
+    name="reprompt",
+    description="Rewrite prompt with gemini",
 )
 @app_commands.describe(
-    prompt="prompt for create images",
+    prompt="Rewrite prompt with gemini",
 )
-async def image_prompt(interaction: discord.Interaction, prompt: str):
+async def re_prompt(interaction: discord.Interaction, prompt: str):
     await interaction.response.defer()
     prompt = rewrite_prompt(prompt)
-    # image_list = create_image(prompt)
-    # parsed_url = urlparse(image_list[0])
-    # embeds = [discord.Embed(
-    # url=f'{parsed_url.scheme}://{parsed_url.netloc}').set_image(url=image) for image in image_list]
     await interaction.followup.send(content=f"gemini rewrite:{prompt}")
 
 
