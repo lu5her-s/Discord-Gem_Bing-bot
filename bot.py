@@ -269,8 +269,6 @@ async def re_prompt(interaction: discord.Interaction, prompt: str):
 # ---------------------------------------------Run Bot-------------------------------------------------
 
 
-@bot.command()
-@commands.is_owner()
 async def sync():
     synced = await bot.tree.sync()
     # await send(f"Synced {len(synced)} commands")
