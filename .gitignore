@@ -1,4 +1,5 @@
 .env
+.venv
 akashi.py
 errors.log
 __pycache__
