@@ -267,9 +267,20 @@ async def re_prompt(interaction: discord.Interaction, prompt: str):
 
 
 # ---------------------------------------------Run Bot-------------------------------------------------
+
+
+@bot.command()
+@commands.is_owner()
+async def sync(ctx: commands.Context):
+    synced = await ctx.bot.tree.sync()
+    await ctx.send(f"Synced {len(synced)} commands")
+    return
+
+
 @bot.event
 async def on_ready():
     await bot.tree.sync()
+    await sync(ctx=bot)
     print("----------------------------------------")
     print(f"Gemini Bot Logged in as {bot.user}")
     print("----------------------------------------")
